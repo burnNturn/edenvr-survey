@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @customer.date %>
+</p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @customer.machine %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @customer.game %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @customer.age %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @customer.gender %>
+</p>
+
+<p>
+  <strong>Race:</strong>
+  <%= @customer.race %>
+</p>
+
+<p>
+  <strong>Income:</strong>
+  <%= @customer.income %>
+</p>
+
+<p>
+  <strong>Group type:</strong>
+  <%= @customer.group_type %>
+</p>
+
+<p>
+  <strong>Group size:</strong>
+  <%= @customer.group_size %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>

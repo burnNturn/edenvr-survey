@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-04-25
+  machine: MyString
+  game: MyString
+  age: MyString
+  gender: MyString
+  race: MyString
+  income: MyString
+  group_type: MyString
+  group_size: 1
+
+two:
+  date: 2017-04-25
+  machine: MyString
+  game: MyString
+  age: MyString
+  gender: MyString
+  race: MyString
+  income: MyString
+  group_type: MyString
+  group_size: 1

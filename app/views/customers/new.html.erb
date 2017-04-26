@@ -1,0 +1,15 @@
+<h1>New Customer</h1>
+
+<div id="columns">
+  <div id="left">
+    <h1>Machine 1</h1>
+    <%= render 'form', customer: @customer %>
+  </div>
+  <div id="right">
+    <h1>Machine 2</h1>
+    <%= render 'form', customer: @customer %>
+  </div>
+</div>
+
+
+<%= link_to 'Back', customers_path %>
