@@ -26,16 +26,10 @@ class CustomersController < ApplicationController
   def create
     customer_params[:date] = Time.now
     customer_params[:machine] = "machine 1"
-    @customer = Customer.new(customer_params)
+    @customer = Customer.create!(customer_params)
 
     respond_to do |format|
-      if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
   end
 
