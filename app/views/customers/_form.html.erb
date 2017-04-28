@@ -11,15 +11,8 @@
     </div>
   <% end %>
 
-  <!-- <div class="field">
-    <%= f.label :date %>
-    <%= f.date_select :date %>
-  </div> -->
-
-  <!-- <div class="field">
-    <%= f.label :machine %>
-    <%= f.text_field :machine %>
-  </div> -->
+  <%= f.hidden_field :date, value: Time.now %>
+  <%= f.hidden_field :machine, value: "machine 1" %>
 
   <div class="field">
     <%= f.label :game %>

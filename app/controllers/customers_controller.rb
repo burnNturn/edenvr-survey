@@ -24,6 +24,8 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+    customer_params[:date] = Time.now
+    customer_params[:machine] = "machine 1"
     @customer = Customer.new(customer_params)
 
     respond_to do |format|
