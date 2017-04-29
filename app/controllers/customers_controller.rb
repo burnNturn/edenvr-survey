@@ -1,3 +1,5 @@
+require 'byebug'
+
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
@@ -24,9 +26,9 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-    customer_params[:date] = Time.now
-    customer_params[:machine] = "machine 1"
     @customer = Customer.create!(customer_params)
+    byebug
+    @machine = customer_params[:machine]
 
     respond_to do |format|
       format.js
