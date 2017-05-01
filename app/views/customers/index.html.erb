@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Customers</h1>
+<div>
+  <%= form_tag customers_path, method: :get do %>
+    <span>
+      <%= text_field_tag :game, params[:game], placeholder: "Search Game" %>
+    </span>
+    <%= select_tag "Gender", "<option>Male</option><option>Female</option><option>Decline to State</option>".html_safe %>
+    <%= fa_icon 'search' %>
+    <!-- :name => nil will make url cleaner -->
+    <%= submit_tag "Search", :name => nil, class: 'blue-btn' %>
+  <% end %>
+</div>
 
 <table>
   <thead>

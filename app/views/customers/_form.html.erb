@@ -26,7 +26,11 @@
 
   <div class="field">
     <%= f.label :gender %>
-    <%= f.text_field :gender %>
+    <%= f.select :gender do %>
+      <% [['Male', 'Male'], ['Female', 'Female'], ['Decline to State','Decline to State']].each do |c| -%>
+        <%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="field">
