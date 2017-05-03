@@ -16,8 +16,8 @@
 
   <div class="field">
     <%= f.label :game %>
-    <%= f.select :game, Customer.game_names.keys,
-                        prompt: 'Select a Game' %>
+    <%= f.select :game, Customer.game_names.keys, :required => true,
+                        include_blank: 'Select a Game' %>
   </div>
 
   <div class="field">

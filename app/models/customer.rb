@@ -48,7 +48,7 @@ class Customer < ApplicationRecord
     "Group-Immediate Family" => "Group-Immediate Family"
   }
 
-
   validates  :game, :age, :gender, :race, :income,
     :group_type, :group_size, presence: true
+  validates :game, inclusion: {in: game_names.keys, message: "Please Select A Game"}
 end
