@@ -16,32 +16,38 @@
 
   <div class="field">
     <%= f.label :game %>
-    <%= f.text_field :game %>
+    <%= f.select :game, Customer.game_names.keys,
+                        prompt: 'Select a Game' %>
   </div>
 
   <div class="field">
     <%= f.label :age %>
-    <%= f.select :age, options_for_select(Customer::AGE_ARRAY) %>
+    <%= f.select :age, Customer.age_ranges.keys,
+                        prompt: 'Select Age Range' %>
   </div>
 
   <div class="field">
     <%= f.label :gender %>
-    <%= f.select :gender, options_for_select(Customer::GENDER_ARRAY) %>
+    <%= f.select :gender, Customer.gender_fields.keys,
+                        prompt: 'Select Gender'%>
   </div>
 
   <div class="field">
     <%= f.label :race %>
-    <%= f.select :race, options_for_select(Customer::RACE_ARRAY) %>
+    <%= f.select :race, Customer.race_fields.keys,
+                        prompt: 'Select Race'%>
   </div>
 
   <div class="field">
     <%= f.label :income %>
-    <%= f.select :income, options_for_select(Customer::INCOME_ARRAY) %>
+    <%= f.select :income, Customer.income_fields.keys,
+                          prompt: 'Select Income Range'%>
   </div>
 
   <div class="field">
     <%= f.label :group_type %>
-    <%= f.text_field :group_type %>
+    <%= f.select :group_type, Customer.group_types.keys,
+                            prompt: 'Select Group Type'%>
   </div>
 
   <div class="field">
