@@ -21,26 +21,22 @@
 
   <div class="field">
     <%= f.label :age %>
-    <%= f.text_field :age %>
+    <%= f.select :age, options_for_select(Customer::AGE_ARRAY) %>
   </div>
 
   <div class="field">
     <%= f.label :gender %>
-    <%= f.select :gender do %>
-      <% [['Male', 'Male'], ['Female', 'Female'], ['Decline to State','Decline to State']].each do |c| -%>
-        <%= content_tag(:option, c.first, value: c.last) %>
-      <% end %>
-    <% end %>
+    <%= f.select :gender, options_for_select(Customer::GENDER_ARRAY) %>
   </div>
 
   <div class="field">
     <%= f.label :race %>
-    <%= f.text_field :race %>
+    <%= f.select :race, options_for_select(Customer::RACE_ARRAY) %>
   </div>
 
   <div class="field">
     <%= f.label :income %>
-    <%= f.text_field :income %>
+    <%= f.select :income, options_for_select(Customer::INCOME_ARRAY) %>
   </div>
 
   <div class="field">

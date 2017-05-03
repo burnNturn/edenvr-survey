@@ -6,7 +6,7 @@
     <span>
       <%= text_field_tag :game, params[:game], placeholder: "Search Game" %>
     </span>
-    <%= select_tag "Gender", "<option>Male</option><option>Female</option><option>Decline to State</option>".html_safe %>
+    <%= select_tag :gender, options_for_select(Customer::GENDER_ARRAY) %>
     <%= fa_icon 'search' %>
     <!-- :name => nil will make url cleaner -->
     <%= submit_tag "Search", :name => nil, class: 'blue-btn' %>
