@@ -12,8 +12,13 @@ class Customer < ApplicationRecord
     
   def self.search(paramz)
     #keyword.present? ? Customer.where(game: keyword) : Customer.all
-    gender = paramz[:Gender]
+    age = paramz[:age]
+    gender = paramz[:gender]
+    income = paramz[:income]
+    race = paramz[:race]
     game = paramz[:game].present? ? paramz[:game] : "%%"
-    Customer.where('game LIKE ?', "%#{game}%").where("gender LIKE ?", "%#{gender}%")
+    customers = Customer.where('game LIKE ?', "%#{game}%").where("gender LIKE ?", "#{gender}").where("age LIKE ?", "#{age}").where("income LIKE ?", "#{income}").where("race LIKE ?", "#{race}")
+    return Customer.all if customers.nil?
+    Customer.all
   end
 end
