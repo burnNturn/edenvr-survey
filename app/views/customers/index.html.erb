@@ -4,20 +4,25 @@
 <div class="search-menu">
   <%= form_tag customers_path, method: :get do %>
     <div>
-      <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last) %>
-      <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last) %>
-      <%= select_tag :age, options_from_collection_for_select(Customer::age_ranges, :first, :last) %>
-      <%= select_tag :income, options_from_collection_for_select(Customer::income_fields, :first, :last) %>
-      <%= select_tag :race, options_from_collection_for_select(Customer::race_fields, :first, :last) %>
+      <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last), 
+          prompt: 'Select a Game' %>
+      <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
+          prompt: 'Select Gender' %>
+      <%= select_tag :age, options_from_collection_for_select(Customer::age_ranges, :first, :last),
+          prompt: 'Select Age Range' %>
+      <%= select_tag :income, options_from_collection_for_select(Customer::income_fields, :first, :last),
+          prompt: 'Select Income Range' %>
+      <%= select_tag :race, options_from_collection_for_select(Customer::race_fields, :first, :last),
+          prompt: 'Select Race' %>
+      <%= select_tag :group_type, options_from_collection_for_select(Customer::group_types, :first, :last),
+          prompt: 'Select Group Type' %>
+      <%= hidden_field :search, name: "search", value: true%>
       <span class='submit-button'>
         <%= fa_icon 'search' %>
         <!-- :name => nil will make url cleaner -->
         <%= submit_tag "Search", :name => nil, class: 'blue-btn' %>
       </span>
     </div>
-  <% end %>
-  <%= form_tag customers_path, method: :get do %>
-    <%= submit_tag "Clear Search", :name => nil, class: 'blue-btn' %>
   <% end %>
 </div>
 

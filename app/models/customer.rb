@@ -52,14 +52,11 @@ class Customer < ApplicationRecord
     :group_type, :group_size, presence: true
     
   def self.search(paramz)
-    #keyword.present? ? Customer.where(game: keyword) : Customer.all
-    age = paramz[:age]
-    gender = paramz[:gender]
-    income = paramz[:income]
-    race = paramz[:race]
-    game = paramz[:game].present? ? paramz[:game] : "%%"
+    age = paramz[:age].empty? ? "%%" : paramz[:age]
+    gender = paramz[:gender].empty? ? "%%" : paramz[:gender]
+    income = paramz[:income].empty? ? "%%" : paramz[:income]
+    race = paramz[:race].empty? ? "%%" : paramz[:race]
+    game = paramz[:game].empty? ? "%%" : paramz[:game]
     customers = Customer.where('game LIKE ?', "%#{game}%").where("gender LIKE ?", "#{gender}").where("age LIKE ?", "#{age}").where("income LIKE ?", "#{income}").where("race LIKE ?", "#{race}")
-    return Customer.all if customers.nil?
-    Customer.all
   end
 end

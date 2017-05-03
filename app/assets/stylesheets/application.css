@@ -45,3 +45,8 @@ body {
 .nav-link:visited {
     color: white;
 }
+
+#notice {
+    margin-top: 45px;
+    margin-bottom: 0px;
+}
