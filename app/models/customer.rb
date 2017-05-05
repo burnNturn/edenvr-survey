@@ -55,4 +55,5 @@ class Customer < ApplicationRecord
   validates :income, inclusion: { in: income_fields.keys, message: "Please Select Income Range"}
   validates :group_type, inclusion: { in: group_types.keys, message: "Please Select Group Type" }
   validates :group_size, presence: {message: "Can't be blank"}
+    
 end
