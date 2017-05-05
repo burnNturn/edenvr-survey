@@ -47,8 +47,12 @@ class Customer < ApplicationRecord
     "Group-Family"           => "Group-Family",
     "Group-Immediate Family" => "Group-Immediate Family"
   }
-
-  validates  :game, :age, :gender, :race, :income,
-    :group_type, :group_size, presence: true
-  validates :game, inclusion: {in: game_names.keys, message: "Please Select A Game"}
+  validates :date, :machine, presence:true
+  validates :game, inclusion: { in: game_names.keys, message: "Please Select a Game" }
+  validates :age, inclusion: { in: age_ranges.keys, message: "Please Select Age Range"}
+  validates :gender, inclusion: { in: gender_fields.keys, message: "Please Select Gender"}
+  validates :race, inclusion: { in: race_fields.keys, message: "Please Select Race"}
+  validates :income, inclusion: { in: income_fields.keys, message: "Please Select Income Range"}
+  validates :group_type, inclusion: { in: group_types.keys, message: "Please Select Group Type" }
+  validates :group_size, presence: {message: "Can't be blank"}
 end

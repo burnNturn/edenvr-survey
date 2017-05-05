@@ -1,12 +1,6 @@
-<% if @customer.errors.any? %>
-  // alert("ERROR(S): <%= j(@customer.errors.full_messages.join('; ')) %>");
-  $("#error_explanation").html("<p><%= j(@customer.errors.full_messages.join('; ')) %></p>")
-  .css('visibility', 'visible');
-<% else %>
-  if ('<%= @machine %>' == 'machine_1') {
-    $("#machine_1_form").replaceWith("<%= j(render 'form', customer: Customer.new, machine: @machine) %>");
-  }
-  else if ('<%= @machine %>' == 'machine_2') {
-    $("#machine_2_form").replaceWith("<%= j(render 'form', customer: Customer.new, machine: @machine) %>");
-  }
-<% end %>
+if ('<%= @machine %>' == 'machine_1') {
+  $("#machine_1_form").replaceWith("<%= j(render 'form', customer: Customer.new, machine: @machine) %>");
+}
+else if ('<%= @machine %>' == 'machine_2') {
+  $("#machine_2_form").replaceWith("<%= j(render 'form', customer: Customer.new, machine: @machine) %>");
+}
