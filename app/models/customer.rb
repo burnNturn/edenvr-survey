@@ -48,7 +48,15 @@ class Customer < ApplicationRecord
     "Group-Immediate Family" => "Group-Immediate Family"
   }
 
-
   validates  :game, :age, :gender, :race, :income,
     :group_type, :group_size, presence: true
+    
+  def self.search(paramz)
+    age = paramz[:age].empty? ? "%%" : paramz[:age]
+    gender = paramz[:gender].empty? ? "%%" : paramz[:gender]
+    income = paramz[:income].empty? ? "%%" : paramz[:income]
+    race = paramz[:race].empty? ? "%%" : paramz[:race]
+    game = paramz[:game].empty? ? "%%" : paramz[:game]
+    customers = Customer.where('game LIKE ?', "%#{game}%").where("gender LIKE ?", "#{gender}").where("age LIKE ?", "#{age}").where("income LIKE ?", "#{income}").where("race LIKE ?", "#{race}")
+  end
 end

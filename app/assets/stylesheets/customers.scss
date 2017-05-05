@@ -19,7 +19,7 @@
 
     .forms-holder {
       margin: 10px 540px;
-      width: 25%;
+      width: 30%;
       float: left;
       margin-top: 0;
 
@@ -38,6 +38,30 @@
 
     .left {
       float: left;
+    }
+  }
+
+  .search-menu {
+    float: left;
+    width: 10%;
+
+    .submit-button {
+      float: left;
+      width: 90%;
+      
+      input {
+        float: left;
+        width: 85%;
+      }
+      
+      i {
+        float: right;
+      }
+    }
+
+    input, select{
+      margin-bottom: 5px;
+      width: 90%;
     }
   }
 }
