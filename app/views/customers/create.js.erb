@@ -1,4 +1,3 @@
-
 if ('<%= @machine %>' == 'machine_1') {
   $("#machine_1_form").replaceWith("<%= j(render 'form', customer: Customer.new, machine: @machine) %>");
 }

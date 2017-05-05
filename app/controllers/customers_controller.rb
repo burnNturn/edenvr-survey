@@ -31,11 +31,16 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-    @customer = Customer.create!(customer_params)
+    @customer = Customer.new(customer_params)
     @machine = @customer.machine
-
     respond_to do |format|
-      format.js
+      if @customer.save
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        format.js
+      end
     end
   end
 
