@@ -55,5 +55,14 @@ class Customer < ApplicationRecord
   validates :income, inclusion: { in: income_fields.keys, message: "Please Select Income Range"}
   validates :group_type, inclusion: { in: group_types.keys, message: "Please Select Group Type" }
   validates :group_size, presence: {message: "Can't be blank"}
-    
+
+  def self.search(paramz)
+    age = paramz[:age].empty? ? "%%" : paramz[:age]
+    gender = paramz[:gender].empty? ? "%%" : paramz[:gender]
+    income = paramz[:income].empty? ? "%%" : paramz[:income]
+    race = paramz[:race].empty? ? "%%" : paramz[:race]
+    game = paramz[:game].empty? ? "%%" : paramz[:game]
+    customers = Customer.where('game LIKE ?', "%#{game}%").where("gender LIKE ?", "#{gender}").where("age LIKE ?", "#{age}").where("income LIKE ?", "#{income}").where("race LIKE ?", "#{race}")
+  end
+
 end
