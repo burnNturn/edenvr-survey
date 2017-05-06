@@ -10,6 +10,19 @@
     float: left;
   }
 
+  .edit-delete-icon {
+    color: #000;
+  }
+
+  .edit-delete-icon:hover {
+    color: #a52a2a;
+    cursor: pointer;
+  }
+  
+  .hide-link {
+    display: none;
+  }
+  
   .columns {
     margin: 0;
     padding: 0;
