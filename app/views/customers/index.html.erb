@@ -54,9 +54,8 @@
         <td><%= customer.income %></td>
         <td><%= customer.group_type %></td>
         <td><%= customer.group_size %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="hide-link"><%= link_to fa_icon('pencil'), edit_customer_path(customer), class: "edit-delete-icon" %></td>
+        <td class="hide-link"><%= link_to fa_icon('trash'), customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "edit-delete-icon" %></td>
       </tr>
     <% end %>
   </tbody>

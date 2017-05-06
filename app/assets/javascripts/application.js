@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require_tree .
 //= require rails.validations
+$(document).on("mouseenter", "tr", function(){
+   $(this).children(".hide-link").show();
+});
+
+$(document).on("mouseleave", "tr", function(){
+   $(this).children(".hide-link").hide();
+});

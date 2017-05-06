@@ -25,24 +25,30 @@ body {
     width: 100%;
     position: fixed;
     height: 44px;
-    background: brown;
+    background: #a52a2a;
 }
 
 .navbar-class {
   float: left;
-  background: deeppink;
+  background: #ff1493;
 }
 
 .nav-link {
     font-weight: 600;
-    color: white;
+    color: #fff;
     text-decoration: none;
     padding: 13px;
     float: left;
 }
 
+.nav-link:hover {
+    color: #fff;
+    background-color: #000;
+    cursor: pointer;
+ }
+
 .nav-link:visited {
-    color: white;
+    color: #fff;
 }
 
 #notice {
