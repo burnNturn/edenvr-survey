@@ -4,7 +4,15 @@
 <div class="search-menu">
   <%= form_tag customers_path, method: :get do %>
     <div>
-      <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last), 
+      <script>
+        $( function() {
+          $( "#start_date" ).datepicker();
+          $( "#end_date" ).datepicker('setDate', "05/06/2017");
+        } );
+      </script>
+      <%= date_field_tag 'start_date', '2017-01-01' %>
+      <%= date_field_tag 'end_date', nil %>
+      <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
           prompt: 'Select a Game' %>
       <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
           prompt: 'Select Gender' %>

@@ -57,12 +57,15 @@ class Customer < ApplicationRecord
   validates :group_size, presence: {message: "Can't be blank"}
 
   def self.search(paramz)
+    byebug
+    start_date = paramz[:start_date].empty? ? "%%" :paramz[:start_date].to_date
+    end_date = paramz[:end_date].empty? ? "%%" :paramz[:end_date].to_date
     age = paramz[:age].empty? ? "%%" : paramz[:age]
     gender = paramz[:gender].empty? ? "%%" : paramz[:gender]
     income = paramz[:income].empty? ? "%%" : paramz[:income]
     race = paramz[:race].empty? ? "%%" : paramz[:race]
     game = paramz[:game].empty? ? "%%" : paramz[:game]
-    customers = Customer.where('game LIKE ?', "%#{game}%").where("gender LIKE ?", "#{gender}").where("age LIKE ?", "#{age}").where("income LIKE ?", "#{income}").where("race LIKE ?", "#{race}")
+    customers = Customer.where(date: start_date..end_date).where('game LIKE ?', "#{game}").where("gender LIKE ?", "#{gender}").where("age LIKE ?", "#{age}").where("income LIKE ?", "#{income}").where("race LIKE ?", "#{race}")
   end
 
 end
