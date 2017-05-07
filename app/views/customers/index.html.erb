@@ -5,17 +5,17 @@
   <%= form_tag customers_path, method: :get, remote: true do %>
     <div>
       <script>
-        $( function() {
+        $(document).ready( function() {
           $( "#start_date" ).datepicker();
-          $( "#end_date" ).datepicker();
 
+          $(  "#end_date" ).datepicker({
+              dateFormat: "yy-mm-dd"
+            }).datepicker('setDate', '0');
+            $('#ui-datepicker-div').css('display', 'none');
         } );
-        $(document).ready(function() {
-          $( "#end_date" ).val('2017-01-02');
-        })
       </script>
       <%= date_field_tag 'start_date', '2017-01-01' %>
-      <%= date_field_tag 'end_date', '2017-01-01' %>
+      <%= date_field_tag 'end_date', nil %>
       <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
           prompt: 'Select a Game' %>
       <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),

@@ -18,11 +18,11 @@
     color: #a52a2a;
     cursor: pointer;
   }
-  
+
   .hide-link {
     display: none;
   }
-  
+
   .columns {
     margin: 0;
     padding: 0;
@@ -65,17 +65,21 @@
     .submit-button {
       float: left;
       width: 90%;
-      
+
       input {
         float: left;
         width: 85%;
       }
-      
+
       i {
         float: right;
       }
     }
 
+    #ui-datepicker-div {
+      display: none;
+    }
+    
     input, select{
       margin-bottom: 5px;
       width: 90%;
