@@ -14,6 +14,10 @@ class CustomersController < ApplicationController
                   else
                     Customer.search(params)
                   end
+    respond_to do |format|
+        format.js
+        format.html        
+    end
   end
 
   # GET /customers/1
