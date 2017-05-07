@@ -58,8 +58,8 @@ class Customer < ApplicationRecord
 
   def self.search(paramz)
     byebug
-    start_date = paramz[:start_date].empty? ? "%%" :paramz[:start_date].to_date
-    end_date = paramz[:end_date].empty? ? "%%" :paramz[:end_date].to_date
+    start_date = paramz[:start_date].empty? ? ("2000-01-01").to_date : paramz[:start_date].to_date
+    end_date = paramz[:end_date].empty? ? ("2100-01-01").to_date : paramz[:end_date].to_date
     age = paramz[:age].empty? ? "%%" : paramz[:age]
     gender = paramz[:gender].empty? ? "%%" : paramz[:gender]
     income = paramz[:income].empty? ? "%%" : paramz[:income]

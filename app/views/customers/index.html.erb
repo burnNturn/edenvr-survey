@@ -7,11 +7,15 @@
       <script>
         $( function() {
           $( "#start_date" ).datepicker();
-          $( "#end_date" ).datepicker('setDate', "05/06/2017");
+          $( "#end_date" ).datepicker();
+
         } );
+        $(document).ready(function() {
+          $( "#end_date" ).val('2017-01-02');
+        })
       </script>
       <%= date_field_tag 'start_date', '2017-01-01' %>
-      <%= date_field_tag 'end_date', nil %>
+      <%= date_field_tag 'end_date', '2017-01-01' %>
       <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
           prompt: 'Select a Game' %>
       <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
