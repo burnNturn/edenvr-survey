@@ -9,13 +9,20 @@
           $( "#start_date" ).datepicker();
 
           $(  "#end_date" ).datepicker({
-              dateFormat: "yy-mm-dd"
+              dateFormat: "yy-mm-dd",
+              autoclose: true,
             }).datepicker('setDate', '0');
+
+            // put in to prevent ui-datepicker-div(ghost calendar) from hanging around
+            $(".hasDatepicker").click(function() {
+              $('#ui-datepicker-div').css('display', 'none');
+            });
+            // put in to prevent ui-datepicker-div(ghost calendar) from being present on load
             $('#ui-datepicker-div').css('display', 'none');
         } );
       </script>
       <%= date_field_tag 'start_date', '2017-01-01' %>
-      <%= date_field_tag 'end_date', nil %>
+      <%= date_field_tag 'end_date', nil, {type: "div"} %>
       <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
           prompt: 'Select a Game' %>
       <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),

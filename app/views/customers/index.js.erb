@@ -1,10 +1,1 @@
-
-$(document).ready( function() {
-  $( "#start_date" ).datepicker();
-
-  $(  "#end_date" ).datepicker({
-      dateFormat: "yy-mm-dd"
-    }).datepicker('setDate', '0');
-    $('#ui-datepicker-div').css('display', 'none');
-} );
-$("#table").replaceWith("<%= j(render 'table', collection: @customers) %>");
+$("#customers_table").replaceWith("<%= j(render 'table', collection: @customers) %>");

@@ -57,7 +57,6 @@ class Customer < ApplicationRecord
   validates :group_size, presence: {message: "Can't be blank"}
 
   def self.search(paramz)
-    byebug
     start_date = paramz[:start_date].empty? ? ("2000-01-01").to_date : paramz[:start_date].to_date
     end_date = paramz[:end_date].empty? ? ("2100-01-01").to_date : paramz[:end_date].to_date
     age = paramz[:age].empty? ? "%%" : paramz[:age]
