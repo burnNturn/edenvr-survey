@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<script>
-javascript_include_tag 'application'
-</script>
+<%= javascript_include_tag 'application.js' %>
 <html>
   <head>
     <title>Survey</title>
     <!-- --><%= stylesheet_link_tag "application", media: "all",
       "data-turbolinks-track" => 'reload' %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => 'reload' %><!-- -->
+    
     <%= csrf_meta_tags %><!-- -->
   </head>
   <header class="navbar  navbar-inverse">
     <div class="navbar-class">
       <%= link_to 'Customers', customers_path, class: 'nav-link' %>
-      <%= link_to '+Add Customer', new_customer_path, class: 'nav-link', 
+      <%= link_to '+Add Customer', new_customer_path, class: 'nav-link',
         style: 'border-left: 1px solid;' %>
     </div>
   </header>

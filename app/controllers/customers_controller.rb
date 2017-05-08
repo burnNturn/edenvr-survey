@@ -5,13 +5,18 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = if !params[:search].present? || (params[:age].empty? && params[:gender].empty? &&
-                      params[:income].empty? && params[:race].empty? && 
-                      params[:game].empty?)
+    @customers = if !params[:search].present? || (params[:start_date].empty? &&
+                      params[:end_date].empty? && params[:age].empty? &&
+                      params[:gender].empty? && params[:income].empty? &&
+                      params[:race].empty? && params[:game].empty?)
                     Customer.all
                   else
                     Customer.search(params)
                   end
+    respond_to do |format|
+        format.js
+        format.html
+    end
   end
 
   # GET /customers/1
