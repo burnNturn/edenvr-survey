@@ -17,9 +17,9 @@
 //= require_tree .
 //= require rails.validations
 $(document).on("mouseenter", "tr", function(){
-   $(this).children(".hide-link").show();
+   $(this).children().last().children().show();
 });
 
 $(document).on("mouseleave", "tr", function(){
-   $(this).children(".hide-link").hide();
+   $(this).children().last().children().hide();
 });
