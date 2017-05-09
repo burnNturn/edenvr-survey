@@ -31,6 +31,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+    @machine = @customer.machine
   end
 
   # POST /customers
