@@ -1,3 +1,5 @@
+require 'date'
+
 
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
@@ -5,6 +7,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    @params = params
     @customers = if !params[:search].present? || (params[:start_date].empty? &&
                       params[:end_date].empty? && params[:age].empty? &&
                       params[:gender].empty? && params[:income].empty? &&
@@ -16,6 +19,21 @@ class CustomersController < ApplicationController
     respond_to do |format|
         format.js
         format.html
+        format.csv { send_data @customers.to_csv, filename: "users_#{DateTime.now.nsec}.csv" }
+    end
+  end
+  
+  def export
+    @customers = if !params[:search].present? || (params[:start_date].empty? &&
+                      params[:end_date].empty? && params[:age].empty? &&
+                      params[:gender].empty? && params[:income].empty? &&
+                      params[:race].empty? && params[:game].empty?)
+                    Customer.all
+                  else
+                    Customer.search(params)
+                  end
+    respond_to do |format|
+      format.csv { send_data @customers.to_csv, filename: "users_#{DateTime.now.nsec}.csv" }
     end
   end
 

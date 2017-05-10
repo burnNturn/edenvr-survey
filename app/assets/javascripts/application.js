@@ -23,3 +23,14 @@ $(document).on("mouseenter", "tr", function(){
 $(document).on("mouseleave", "tr", function(){
    $(this).children(".hide-link").children(".edit-delete-icon").hide();
 });
+
+$(document).ready(function () {
+    $('.download-csv').on('click', function (e) {
+       debugger;
+        e.preventDefault();
+        var link = this;
+        var formData = $('form').serialize();
+        link.href = link.href.toString().replace(/\?.+$/, "?" + formData + "&format=csv");
+        location.href = link.href;
+    });
+});
