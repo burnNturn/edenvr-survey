@@ -1,5 +1,5 @@
 <div id="export-menu", remote: true>
-  <%= form_tag '/customers.csv', method: :get do  %>
+  <%= form_tag customers_path, method: :get do  %>
     <%= hidden_field_tag :search, true %>
     <%= hidden_field_tag 'start_date', @params['start_date'] %>
     <%= hidden_field_tag 'end_date', @params['end_date'] %>
@@ -10,6 +10,6 @@
     <%= hidden_field_tag :income, @params[:income] %>
     <%= hidden_field_tag :race, @params[:race] %>
     <%= hidden_field_tag :group_type, @params[:group_type] %>
-    <%= submit_tag "Export CSV", :name => nil, class: 'blue-btn' %>
+    <%= submit_tag "Export CSV", :value => 'csv', :name => 'format', class: 'blue-btn' %>
     <% end %>
 </div>
