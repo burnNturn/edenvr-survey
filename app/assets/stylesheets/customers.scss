@@ -10,6 +10,10 @@
     float: left;
   }
 
+  h2 {
+    text-align: center;
+  }
+
   .edit-delete-icon {
     color: #000;
     display: none;
@@ -31,11 +35,13 @@
     float: left;
     width: 100%;
 
+    .edit-form {
+      text-align: center;
+    }
+
     .forms-holder {
-      margin: 10px 540px;
+      margin: 0 auto;
       width: 30%;
-      float: left;
-      margin-top: 0;
 
       #error_explanation {
         width: inherit;

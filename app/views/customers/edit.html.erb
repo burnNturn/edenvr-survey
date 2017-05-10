@@ -1,6 +1,7 @@
 <h1>Editing Customer</h1>
 
-<%= render 'form', customer: @customer, machine: @machine %>
-
-<%= link_to 'Show', @customer %> |
-<%= link_to 'Back', customers_path %>
+<div class="columns">
+  <div class='forms-holder' align='middle'>
+    <%= render 'form', customer: @customer, machine: @customer.machine %>
+  </div>
+</div
