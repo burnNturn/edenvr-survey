@@ -4,23 +4,6 @@
 <div class="search-menu">
   <%= form_tag customers_path, method: :get, remote: true do %>
     <div>
-      <script>
-        $(document).ready( function() {
-          $( "#start_date" ).datepicker();
-
-          $(  "#end_date" ).datepicker({
-              dateFormat: "yy-mm-dd",
-              autoclose: true,
-            }).datepicker('setDate', '0');
-
-            // put in to prevent ui-datepicker-div(ghost calendar) from hanging around
-            $(".hasDatepicker").click(function() {
-              $('#ui-datepicker-div').css('display', 'none');
-            });
-            // put in to prevent ui-datepicker-div(ghost calendar) from being present on load
-            $('#ui-datepicker-div').css('display', 'none');
-        } );
-      </script>
       <%= date_field_tag 'start_date', '2017-01-01' %>
       <%= date_field_tag 'end_date', nil, {type: "div"} %>
       <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
