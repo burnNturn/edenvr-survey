@@ -23,3 +23,30 @@ $(document).on("mouseenter", "tr", function(){
 $(document).on("mouseleave", "tr", function(){
    $(this).children(".hide-link").children(".edit-delete-icon").hide();
 });
+
+$(document).ready(function () {
+    $('.download-csv').on('click', function (e) {
+       debugger;
+        e.preventDefault();
+        var link = this;
+        var formData = $('form').serialize();
+        link.href = link.href.toString().replace(/\?.+$/, "?" + formData + "&format=csv");
+        location.href = link.href;
+    });
+});
+
+$(document).ready( function() {
+  $( "#start_date" ).datepicker();
+
+  $(  "#end_date" ).datepicker({
+      dateFormat: "yy-mm-dd",
+      autoclose: true,
+    }).datepicker('setDate', '0');
+
+    // put in to prevent ui-datepicker-div(ghost calendar) from hanging around
+    $(".hasDatepicker").click(function() {
+      $('#ui-datepicker-div').css('display', 'none');
+    });
+    // put in to prevent ui-datepicker-div(ghost calendar) from being present on load
+    $('#ui-datepicker-div').css('display', 'none');
+} );

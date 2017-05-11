@@ -1,3 +1,5 @@
+require 'csv'
+
 class Customer < ApplicationRecord
   enum game_name: {
     "Tilt Brush" => "Tilt Brush",
@@ -66,5 +68,15 @@ class Customer < ApplicationRecord
     game = paramz[:game].empty? ? "%%" : paramz[:game]
     customers = Customer.where(date: start_date..end_date).where('game LIKE ?', "#{game}").where("gender LIKE ?", "#{gender}").where("age LIKE ?", "#{age}").where("income LIKE ?", "#{income}").where("race LIKE ?", "#{race}")
   end
-
+  
+  def self.to_csv
+    attributes = %w{date machine game age gender race income group_type group_size}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      
+      all.each do |customer|
+        csv << attributes.map{ |attr| customer.send(attr) }
+      end
+    end
+  end
 end

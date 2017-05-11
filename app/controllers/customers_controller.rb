@@ -1,3 +1,5 @@
+require 'date'
+
 
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
@@ -5,6 +7,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    @params = params
     @customers = if !params[:search].present? || (params[:start_date].empty? &&
                       params[:end_date].empty? && params[:age].empty? &&
                       params[:gender].empty? && params[:income].empty? &&
@@ -13,11 +16,16 @@ class CustomersController < ApplicationController
                   else
                     Customer.search(params)
                   end
-    respond_to do |format|
-        format.js
-        format.html
+    if params[:format] == 'csv'
+      send_data @customers.to_csv, filename: "users_#{DateTime.now.nsec}.csv"
+    else
+      respond_to do |format|
+          format.js
+          format.html
+      end
     end
   end
+  
 
   # GET /customers/1
   # GET /customers/1.json
@@ -82,6 +90,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:date, :machine, :game, :age, :gender, :race, :income, :group_type, :group_size)
+      params.require(:customer).permit(:date, :machine, :game, :age, :gender, :race, :income, :group_type, :group_size, :format)
     end
 end

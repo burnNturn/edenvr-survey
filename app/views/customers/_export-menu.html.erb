@@ -1,0 +1,15 @@
+<div id="export-menu", remote: true>
+  <%= form_tag customers_path, method: :get do  %>
+    <%= hidden_field_tag :search, true %>
+    <%= hidden_field_tag 'start_date', @params['start_date'] %>
+    <%= hidden_field_tag 'end_date', @params['end_date'] %>
+    <%= hidden_field_tag :machine, @params[:machine] %>
+    <%= hidden_field_tag :game, @params[:game] %>
+    <%= hidden_field_tag :gender, @params[:gender] %>
+    <%= hidden_field_tag :age, @params[:age] %>
+    <%= hidden_field_tag :income, @params[:income] %>
+    <%= hidden_field_tag :race, @params[:race] %>
+    <%= hidden_field_tag :group_type, @params[:group_type] %>
+    <%= button_tag "Export CSV", :value => 'csv', :name => 'format', class: 'blue-btn' %>
+    <% end %>
+</div>
