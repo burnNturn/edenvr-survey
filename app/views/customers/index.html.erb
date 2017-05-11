@@ -1,36 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Customers</h1>
-<div class="search-menu">
-  <%= form_tag customers_path, method: :get, remote: true do %>
-    <div>
-      <%= date_field_tag 'start_date', '2017-01-01' %>
-      <%= date_field_tag 'end_date', nil, {type: "div"} %>
-      <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
-          prompt: 'Select a Game' %>
-      <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
-          prompt: 'Select Gender' %>
-      <%= select_tag :age, options_from_collection_for_select(Customer::age_ranges, :first, :last),
-          prompt: 'Select Age Range' %>
-      <%= select_tag :income, options_from_collection_for_select(Customer::income_fields, :first, :last),
-          prompt: 'Select Income Range' %>
-      <%= select_tag :race, options_from_collection_for_select(Customer::race_fields, :first, :last),
-          prompt: 'Select Race' %>
-      <%= select_tag :group_type, options_from_collection_for_select(Customer::group_types, :first, :last),
-          prompt: 'Select Group Type' %>
-      <%= hidden_field :search, name: "search", value: true%>
-      <span class='submit-button'>
-        <%= fa_icon 'search' %>
-        <!-- :name => nil will make url cleaner -->
-        <%= submit_tag "Search", :name => nil, class: 'blue-btn' %>
-      </span>
-    </div>
-  <% end %>
+<div id="table-wrapper">
+  <h1>Customers</h1>
+  <%= render 'table', collection: @customers %>
 </div>
 
+<div id="customers-menu">
+  <div class="search-menu">
+    <%= form_tag customers_path, method: :get, remote: true do %>
+      <div>
+        <%= date_field_tag 'start_date', '2017-01-01' %>
+        <%= date_field_tag 'end_date', nil, {type: "div"} %>
+        <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
+            prompt: 'Select a Game' %>
+        <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
+            prompt: 'Select Gender' %>
+        <%= select_tag :age, options_from_collection_for_select(Customer::age_ranges, :first, :last),
+            prompt: 'Select Age Range' %>
+        <%= select_tag :income, options_from_collection_for_select(Customer::income_fields, :first, :last),
+            prompt: 'Select Income Range' %>
+        <%= select_tag :race, options_from_collection_for_select(Customer::race_fields, :first, :last),
+            prompt: 'Select Race' %>
+        <%= select_tag :group_type, options_from_collection_for_select(Customer::group_types, :first, :last),
+            prompt: 'Select Group Type' %>
+        <%= hidden_field :search, name: "search", value: true%>
+        <span class='submit-button'>
+          <%= fa_icon 'search' %>
+          <!-- :name => nil will make url cleaner -->
+          <%= submit_tag "Search", :name => nil, class: 'blue-btn' %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+
+
   <%= render 'export-menu', collection: :params %>
+</div>
 
 
-<%= render 'table', collection: @customers %>
 
 <br>

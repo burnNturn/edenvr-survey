@@ -65,27 +65,49 @@
     }
   }
 
-  .search-menu {
+  
+  #table-wrapper {
     float: left;
-    width: 10%;
-
-    .submit-button {
-      float: left;
-      width: 90%;
-
-      input {
-        float: left;
-        width: 85%;
-      }
-
-      i {
-        float: right;
+    width: 80%;
+    
+    #customers-table {
+      width: 100%;
+      text-align: center;
+      
+      
+      table, th, td {
+        border: 1px solid #000;
       }
     }
+  }
 
-    input, select{
-      margin-bottom: 5px;
+
+  #customers-menu {
+    float: right;
+    width: 15%;
+
+    .search-menu {
+      float: left;
       width: 90%;
+  
+      .submit-button {
+        float: left;
+        width: 90%;
+  
+        input {
+          float: left;
+          width: 85%;
+        }
+  
+        i {
+          float: right;
+        }
+      }
+  
+      input, select{
+        margin-bottom: 5px;
+        width: 90%;
+      }
     }
   }
 }
