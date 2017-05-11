@@ -14,7 +14,7 @@
   <%= f.hidden_field :date, value: Time.now %>
   <%= f.hidden_field :machine, value: machine %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :game %>
     <%= f.select :game, Customer.game_names.keys,
                         prompt: 'Select a Game' %>

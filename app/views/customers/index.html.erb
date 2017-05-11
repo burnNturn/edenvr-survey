@@ -3,8 +3,10 @@
 </div>
 <div class="row">
   <div class="col-sm-9">
-    <h1>Customers</h1>
-    <%= render 'table', collection: @customers %>
+    <div class="table-responsiv">
+      <h1>Customers</h1>
+      <%= render 'table', collection: @customers %>
+    </div>
   </div>
   <div class="col-sm-3">
     <div class="panel-group" id="accordion">
@@ -18,25 +20,25 @@
           <div class="panel-body">
             <%= form_tag customers_path, method: :get, remote: true do %>
         <div>
-          <%= date_field_tag 'start_date', '2017-01-01' %>
-          <%= date_field_tag 'end_date', nil, {type: "div"} %>
+          <%= date_field_tag 'start_date', '2017-01-01', {class: "form_control"} %>
+          <%= date_field_tag 'end_date', nil, {type: "div", class: "form_control"} %>
           <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
-              prompt: 'Select a Game' %>
+              prompt: 'Select a Game', class:"form_control" %>
           <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
-              prompt: 'Select Gender' %>
+              prompt: 'Select Gender', class:"form_control" %>
           <%= select_tag :age, options_from_collection_for_select(Customer::age_ranges, :first, :last),
-              prompt: 'Select Age Range' %>
+              prompt: 'Select Age Range', class: "form_control" %>
           <%= select_tag :income, options_from_collection_for_select(Customer::income_fields, :first, :last),
-              prompt: 'Select Income Range' %>
+              prompt: 'Select Income Range', class: "form_control" %>
           <%= select_tag :race, options_from_collection_for_select(Customer::race_fields, :first, :last),
-              prompt: 'Select Race' %>
+              prompt: 'Select Race', class:"form_control" %>
           <%= select_tag :group_type, options_from_collection_for_select(Customer::group_types, :first, :last),
-              prompt: 'Select Group Type' %>
+              prompt: 'Select Group Type', class:"form_control" %>
           <%= hidden_field :search, name: "search", value: true%>
           <span class='submit-button'>
             <%= fa_icon 'search' %>
             <!-- :name => nil will make url cleaner -->
-            <%= submit_tag "Search", :name => nil, class: 'blue-btn' %>
+            <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
           </span>
         </div>
       <% end %>
