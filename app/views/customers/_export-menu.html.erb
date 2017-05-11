@@ -10,6 +10,6 @@
     <%= hidden_field_tag :income, @params[:income] %>
     <%= hidden_field_tag :race, @params[:race] %>
     <%= hidden_field_tag :group_type, @params[:group_type] %>
-    <%= submit_tag "Export CSV", :value => 'csv', :name => 'format', class: 'blue-btn' %>
+    <%= button_tag "Export CSV", :value => 'csv', :name => 'format', class: 'blue-btn' %>
     <% end %>
 </div>
