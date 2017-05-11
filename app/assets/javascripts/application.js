@@ -34,3 +34,19 @@ $(document).ready(function () {
         location.href = link.href;
     });
 });
+
+$(document).ready( function() {
+  $( "#start_date" ).datepicker();
+
+  $(  "#end_date" ).datepicker({
+      dateFormat: "yy-mm-dd",
+      autoclose: true,
+    }).datepicker('setDate', '0');
+
+    // put in to prevent ui-datepicker-div(ghost calendar) from hanging around
+    $(".hasDatepicker").click(function() {
+      $('#ui-datepicker-div').css('display', 'none');
+    });
+    // put in to prevent ui-datepicker-div(ghost calendar) from being present on load
+    $('#ui-datepicker-div').css('display', 'none');
+} );
