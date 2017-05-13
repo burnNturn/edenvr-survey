@@ -1,7 +1,11 @@
-<h1>Editing Customer</h1>
-
-<div class="columns">
-  <div class='forms-holder' align='middle'>
-    <%= render 'form', customer: @customer, machine: @customer.machine %>
+<% if user_signed_in? %>
+  <h1>Editing Customer</h1>
+  
+  <div class="columns">
+    <div class='forms-holder' align='middle'>
+      <%= render 'form', customer: @customer, machine: @customer.machine %>
+    </div>
   </div>
-</div
+<% else %>
+
+<% end %>

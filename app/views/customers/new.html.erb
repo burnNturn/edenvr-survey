@@ -1,14 +1,18 @@
-<h1>New Customer</h1>
-
-<div class="columns">
-  <div class='forms-holder'>
-    <div class="left">
-      <h2>Machine 1</h2>
-      <%= render 'form', customer: Customer.new, machine: "machine_1" %>
-    </div>
-    <div class="right">
-      <h2>Machine 2</h2>
-      <%= render 'form', customer: Customer.new, machine: "machine_2" %>
+<% if user_signed_in? %>  
+  <h1>New Customer</h1>
+  
+  <div class="columns">
+    <div class='forms-holder'>
+      <div class="left">
+        <h2>Machine 1</h2>
+        <%= render 'form', customer: Customer.new, machine: "machine_1" %>
+      </div>
+      <div class="right">
+        <h2>Machine 2</h2>
+        <%= render 'form', customer: Customer.new, machine: "machine_2" %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+
+<% end %>

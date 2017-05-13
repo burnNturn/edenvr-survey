@@ -1,62 +1,66 @@
-<div class="row">
-  <p id="notice"><%= notice %></p>
-</div>
-<div class="row">
-  <div class="col-sm-10">
-    <div class="table-responsiv">
-      <h1>Customers</h1>
-      <%= render 'table', collection: @customers %>
-    </div>
+<% if user_signed_in? %>  
+  <div class="row">
+    <p id="notice"><%= notice %></p>
   </div>
-  <div class="col-sm-2">
-    <div class="panel-group" id="accordion">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Filters</a>
-          </h4>
-        </div>
-        <div id="collapse1" class="panel-collapse collapse">
-          <div class="panel-body">
-            <%= form_tag customers_path, method: :get, remote: true do %>
-        <div>
-          <%= date_field_tag 'start_date', '2017-01-01', {class: "form_control"} %>
-          <%= date_field_tag 'end_date', nil, {type: "div", class: "form_control"} %>
-          <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
-              prompt: 'Select a Game', class:"form_control" %>
-          <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
-              prompt: 'Select Gender', class:"form_control" %>
-          <%= select_tag :age, options_from_collection_for_select(Customer::age_ranges, :first, :last),
-              prompt: 'Select Age Range', class: "form_control" %>
-          <%= select_tag :income, options_from_collection_for_select(Customer::income_fields, :first, :last),
-              prompt: 'Select Income Range', class: "form_control" %>
-          <%= select_tag :race, options_from_collection_for_select(Customer::race_fields, :first, :last),
-              prompt: 'Select Race', class:"form_control" %>
-          <%= select_tag :group_type, options_from_collection_for_select(Customer::group_types, :first, :last),
-              prompt: 'Select Group Type', class:"form_control" %>
-          <%= hidden_field :search, name: "search", value: true%>
-          <span class='submit-button'>
-            <%= fa_icon 'search' %>
-            <!-- :name => nil will make url cleaner -->
-            <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
-          </span>
-        </div>
-      <% end %>
-          </div>
-        </div>
+  <div class="row">
+    <div class="col-sm-10">
+      <div class="table-responsiv">
+        <h1>Customers</h1>
+        <%= render 'table', collection: @customers %>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Export</a>
-          </h4>
-        </div>
-        <div id="collapse2" class="panel-collapse collapse">
-          <div class="panel-body">
-            <%= render 'export-menu', collection: :params %>
+    </div>
+    <div class="col-sm-2">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Filters</a>
+            </h4>
           </div>
+          <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+              <%= form_tag customers_path, method: :get, remote: true do %>
+          <div>
+            <%= date_field_tag 'start_date', '2017-01-01', {class: "form_control"} %>
+            <%= date_field_tag 'end_date', nil, {type: "div", class: "form_control"} %>
+            <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
+                prompt: 'Select a Game', class:"form_control" %>
+            <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
+                prompt: 'Select Gender', class:"form_control" %>
+            <%= select_tag :age, options_from_collection_for_select(Customer::age_ranges, :first, :last),
+                prompt: 'Select Age Range', class: "form_control" %>
+            <%= select_tag :income, options_from_collection_for_select(Customer::income_fields, :first, :last),
+                prompt: 'Select Income Range', class: "form_control" %>
+            <%= select_tag :race, options_from_collection_for_select(Customer::race_fields, :first, :last),
+                prompt: 'Select Race', class:"form_control" %>
+            <%= select_tag :group_type, options_from_collection_for_select(Customer::group_types, :first, :last),
+                prompt: 'Select Group Type', class:"form_control" %>
+            <%= hidden_field :search, name: "search", value: true%>
+            <span class='submit-button'>
+              <%= fa_icon 'search' %>
+              <!-- :name => nil will make url cleaner -->
+              <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
+            </span>
+          </div>
+        <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Export</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+              <%= render 'export-menu', collection: :params %>
+            </div>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+
+<% end %>
 
 
