@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :games
   root 'customers#index'
   resources :customers do
     get 'export'

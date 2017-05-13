@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<%= select_tag 'games', options_for_select(@games.collect{|game| [game.title]}), {multiple: true, include_blank: true} %>
+
+<%= select_tag 'games', options_for_select(@games_avail.collect{|game| [game.title]}), {multiple: true, include_blank: true} %>
+<h1>Games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Available</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.title %></td>
+        <td><%= game.available %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>
