@@ -17,11 +17,11 @@
 //= require_tree .
 //= require rails.validations
 $(document).on("mouseenter", "tr", function(){
-   $(this).children(".hide-link").children(".edit-delete-icon").show();
+   $(this).children(".hide-link").children(".hidden-link-container").children().show();
 });
 
 $(document).on("mouseleave", "tr", function(){
-   $(this).children(".hide-link").children(".edit-delete-icon").hide();
+   $(this).children(".hide-link").children(".hidden-link-container").children().hide();
 });
 
 $(document).ready(function () {
