@@ -10,7 +10,7 @@
       <th>Income</th>
       <th>Group type</th>
       <th>Group size</th>
-      <th style="width=40px"></th>
+      <th style="width:40px;"></th>
     </tr>
   </thead>
 
@@ -26,8 +26,8 @@
         <td><%= customer.income %></td>
         <td><%= customer.group_type %></td>
         <td><%= customer.group_size %></td>
-        <td class="hide-link"><%= link_to fa_icon('pencil'), edit_customer_path(customer), class: "edit-delete-icon" %></td>
-        <td class="hide-link"><%= link_to fa_icon('trash'), customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "edit-delete-icon" %></td>
+        <td class="hide-link"><div class='hidden-link-container'><%= link_to fa_icon('pencil'), edit_customer_path(customer), class: "edit-delete-icon" %></div></td>
+        <td class="hide-link"><div class='hidden-link-container'><%= link_to fa_icon('trash'), customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "edit-delete-icon" %></div></td>
       </tr>
     <% end %>
   </tbody>
