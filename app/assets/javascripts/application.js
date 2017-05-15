@@ -85,7 +85,16 @@ function toggleButtons() {
     } else {
       ele.style.display = 'none';
     };
-}
+    
+    var checkboxes = document.getElementsByClassName("available-checkbox");
+    for(i=0; i< checkboxes.length; i++) {
+        if (checkboxes[i].disabled == true) {
+            checkboxes[i].disabled = false;
+        } else {
+            checkboxes[i].disabled = true;
+        };
+    };
+};
 
 
 
