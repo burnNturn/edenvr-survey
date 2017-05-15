@@ -1,3 +1,32 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+    
+.all-games, .games-available {
+    float: left;
+    width: 30%;
+    
+    select {
+        height: 200px;
+        padding: 0;
+        
+        option {
+            padding: 4px 10px 4px 10px;
+        }
+        
+        option:hover {
+            background: #EEEEEE;
+        }
+    }
+}
+
+.games-info-arrows {
+    float: left;
+    width: 10%;
+    
+    input {
+        width: 70%;
+        margin-bottom: 5px;
+    }
+}

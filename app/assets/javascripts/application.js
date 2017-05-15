@@ -50,3 +50,42 @@ $(document).ready( function() {
     // put in to prevent ui-datepicker-div(ghost calendar) from being present on load
     $('#ui-datepicker-div').css('display', 'none');
 } );
+
+
+function edit_click() {
+    toggleButtons();
+};
+
+function update_click() {
+    toggleButtons();
+};
+
+function cancel_click() {
+    toggleButtons();
+};
+
+function toggleButtons() {
+    var ele = document.getElementById('edit');
+    if (ele.style.display ==='none') {
+      ele.style.display = 'inline';
+    } else {
+      ele.style.display = 'none';
+    };
+
+    var ele = document.getElementById('update');
+    if (ele.style.display ==='none') {
+      ele.style.display = 'inline';
+    } else {
+      ele.style.display = 'none';
+    };
+
+    var ele = document.getElementById('cancel');
+    if (ele.style.display ==='none') {
+      ele.style.display = 'inline';
+    } else {
+      ele.style.display = 'none';
+    };
+}
+
+
+

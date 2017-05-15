@@ -1,0 +1,20 @@
+<table class="table" id="games-table", remote: true>
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Available?</th>
+      <th style="width=40px"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.title %></td>
+        <td><%= check_box_tag 'available?', value= nil, checked = game.available %></td>
+        <td class="hide-link"><%= link_to fa_icon('pencil'), edit_game_path(game), class: "edit-delete-icon" %></td>
+        <td class="hide-link"><%= link_to fa_icon('trash'), game, method: :delete, data: { confirm: 'Are you sure?' }, class: "edit-delete-icon" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
