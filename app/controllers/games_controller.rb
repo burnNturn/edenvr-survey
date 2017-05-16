@@ -4,6 +4,9 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
+    if @game.nil?
+      @game=Game.new
+    end
     @games = Game.all
     @games_avail = Game.where(:available => true)
   end
@@ -33,10 +36,12 @@ class GamesController < ApplicationController
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
+        format.js
         
       else
         format.html { render :new }
         format.json { render json: @game.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

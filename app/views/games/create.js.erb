@@ -1,0 +1,4 @@
+
+$("#new_game_form").replaceWith("<%= j(render 'form', game: @game) %>");
+
+$("#games-table").replaceWith("<%= j(render 'table', collection: @games) %>");
