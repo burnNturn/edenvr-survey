@@ -57,7 +57,28 @@ function edit_click() {
 };
 
 function update_click() {
+    debugger;
     toggleButtons();
+    var table = document.getElementById("games-table");
+    
+    for (i = 1; i < table.rows.length; i++) {
+        var row = table.getElementsByTagName("tr")[i];
+        var cells = row.cells;
+        var game_id = cells[0].firstChild.value;
+        var elem = document.getElementById("available_" + game_id)
+        var avail = elem.checked;
+        
+        $.ajax({
+            type: "PUT",
+            dataType: "script",
+            url: '/games/' + game_id,
+            contentType: 'application/json',
+            data: JSON.stringify({available:avail, _method: 'put'})
+        }).done(function(msg) {
+            alert("Data Saved: " + msg );
+        });
+        // $.put("/games/" + game_id + "/available=" + available);
+    }
 };
 
 function cancel_click() {
