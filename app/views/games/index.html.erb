@@ -1,5 +1,3 @@
-<%= javascript_include_tag 'games' %>
-
 <div class="row">
   <p id="notice"><%= notice %></p>
 </div>
@@ -36,7 +34,7 @@
         </div>
         <div id="collapse2" class="panel-collapse collapse">
           <div class="panel-body">
-            <%= render 'form', game: @game %>
+            <%= render 'form', game: Game.new %>
           </div>
     </div>
   </div>

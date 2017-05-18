@@ -8,7 +8,7 @@
   </thead>
 
   <tbody>
-    <% @games.each do |game| %>
+    <% collection.each do |game| %>
       <tr>
         <td display: none, value: game.id><%= hidden_field_tag "game_id" , value = game.id %></td>
         <td><%= game.title %></td>
