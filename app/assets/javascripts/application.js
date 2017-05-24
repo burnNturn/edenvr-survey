@@ -51,63 +51,65 @@ $(document).ready( function() {
     $('#ui-datepicker-div').css('display', 'none');
 } );
 
-
-function edit_click() {
+$(document).on('click', '#update', function() {
     toggleButtons();
-};
-
-function update_click() {
+    var url = $(this).data();
     debugger;
-    toggleButtons();
-    var table = document.getElementById("games-table");
-    
-    for (i = 1; i < table.rows.length; i++) {
-        var row = table.getElementsByTagName("tr")[i];
-        var cells = row.cells;
-        var game_id = cells[0].firstChild.value;
-        var elem = document.getElementById("available_" + game_id)
-        var avail = elem.checked;
-        
-        $.ajax({
-            type: "PUT",
-            dataType: "script",
-            url: '/games/' + game_id,
-            contentType: 'application/json',
-            data: JSON.stringify({available:avail, _method: 'put'})
-        }).done(function(msg) {
-            alert("Data Saved: " + msg );
-        });
-        // $.put("/games/" + game_id + "/available=" + available);
-    }
-};
+    var checked_arr = [];
+    var unchecked_arr = [];
 
-function cancel_click() {
+    rows = $('tr');
+
+    // i starts at one to skip headers and -1 to
+    // row.size because it need to account for that too
+    for(var i = 1; i <= rows.size - 1; i++) {
+        if(rows[i].is(':checked')) {
+            checked_arr << rows.eq(i).find('td').eq(0).data('game-id');
+        } else {
+            unchecked_arr << rows.eq(i).find('td').eq(0).data('game-id');
+        }
+    }
+
+    $.ajax({
+        type: "PUT",
+        dataType: "script",
+        url: url,
+        contentType: 'application/json',
+        data: {checked: checked_arr,
+               unchecked: unchecked_arr}
+    });
+});
+
+$(document).on('click', '#edit-available, #cancel', function() {
     toggleButtons();
-};
+});
 
 function toggleButtons() {
-    var ele = document.getElementById('edit');
-    if (ele.style.display ==='none') {
-      ele.style.display = 'inline';
+    var ele = $('#edit-available');
+
+    if (ele.css('display') ==='none') {
+      ele.css('display', 'inline');
     } else {
-      ele.style.display = 'none';
+      ele.css('display', 'none');
     };
 
-    var ele = document.getElementById('update');
-    if (ele.style.display ==='none') {
-      ele.style.display = 'inline';
+    var ele = $('#update');
+
+    if (ele.css('display') ==='none') {
+      ele.css('display', 'inline');
     } else {
-      ele.style.display = 'none';
+      ele.css('display', 'none');
     };
 
-    var ele = document.getElementById('cancel');
-    if (ele.style.display ==='none') {
-      ele.style.display = 'inline';
+    var ele = $('#cancel');
+
+    if (ele.css('display') ==='none') {
+      ele.css('display', 'inline');
     } else {
-      ele.style.display = 'none';
+      ele.css('display', 'none');
     };
     
-    var checkboxes = document.getElementsByClassName("available-checkbox");
+    var checkboxes = $(".available-checkbox");
     for(i=0; i< checkboxes.length; i++) {
         if (checkboxes[i].disabled == true) {
             checkboxes[i].disabled = false;

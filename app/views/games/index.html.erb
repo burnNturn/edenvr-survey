@@ -2,7 +2,8 @@
   <p id="notice"><%= notice %></p>
 </div>
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
     <div class="table-responsiv">
       <h1>Games</h1>
       <%= render 'table', collection: @games %>
@@ -20,9 +21,9 @@
           <div class="panel-body">
             <script>
             </script>
-            <button onclick='edit_click()' id="edit" type="button" class="btn btn-default">Edit</button>
-            <button onclick='update_click()' id="update" type="button" class="btn btn-default" style='display:none'>Update</button>
-            <button onclick='cancel_click()' id="cancel" type="button" class="btn btn-default" style='display:none'>Cancel</button>
+            <button id="edit-available" type="button" class="btn btn-default">Edit</button>
+            <button data-url='<%= update_availability_games_url %>' data-remote='true' id="update" type="button" class="btn btn-default" style='display:none'>Update</button>
+            <button id="cancel" type="button" class="btn btn-default" style='display:none'>Cancel</button>
           </div>
         </div>
       </div>

@@ -14,6 +14,10 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
+  def update_availability
+    byebug
+  end
+
   # GET /games/new
   def new
   end
