@@ -5,7 +5,7 @@ class Game < ApplicationRecord
     end
 
     def self.change_game_availability(available, unavailable)
-        Game.where(id: available).update_all(available: true)
-        Game.where(id: unavailable).update_all(available: false)
+        Game.where(id: available).update_all(available: true) if available.present?
+        Game.where(id: unavailable).update_all(available: false) if unavailable.present?
     end
 end
