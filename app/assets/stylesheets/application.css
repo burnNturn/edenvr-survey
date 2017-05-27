@@ -26,6 +26,7 @@ body {
     position: fixed;
     height: 44px;
     background: #a52a2a;
+    z-index: 999;
 }
 
 .navbar-class {
@@ -55,3 +56,11 @@ body {
     margin-top: 45px;
     margin-bottom: 0px;
 }
+
+#body {
+    margin-top: 70px;
+}
+
+.table, td, th, tr {
+    text-align: center;
+  }

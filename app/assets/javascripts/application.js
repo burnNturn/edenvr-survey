@@ -16,6 +16,10 @@
 //= require turbolinks
 //= require_tree .
 //= require rails.validations
+
+/********************/
+/////CUSTOMERS JS/////
+/********************/
 $(document).on("mouseenter", "tr", function(){
    $(this).children(".hide-link").children(".hidden-link-container").children().show();
 });
@@ -50,3 +54,73 @@ $(document).ready( function() {
     // put in to prevent ui-datepicker-div(ghost calendar) from being present on load
     $('#ui-datepicker-div').css('display', 'none');
 } );
+
+
+/********************/
+///////Game JS////////
+/********************/
+$(document).on('click', '#update', function() {
+    toggleButtons();
+    var url = $(this).attr('data-url');
+    var checked_arr = getIdsOfCheckboxes($('td > input:checked'));
+    var unchecked_arr = getIdsOfCheckboxes($("td > input:checkbox:not(:checked)"));
+
+    $.ajax({
+        type: "PUT",
+        dataType: "script",
+        url: url,
+        data: {checked: checked_arr,
+               unchecked: unchecked_arr}
+    });
+});
+
+$(document).on('click', '#edit-available, #cancel', function() {
+    toggleButtons();
+});
+
+//gets #ids from checkboxes EX: <input id='1'>
+function getIdsOfCheckboxes(arr) {
+    var idArr = []
+    $.map(arr, function(n, i) {
+	    idArr[i] = (parseInt(n.id));
+    });
+    return idArr;
+}
+
+function toggleButtons() {
+    var ele = $('#edit-available');
+
+    if (ele.css('display') ==='none') {
+      ele.css('display', 'inline');
+    } else {
+      ele.css('display', 'none');
+    };
+
+    var ele = $('#update');
+
+    if (ele.css('display') ==='none') {
+      ele.css('display', 'inline');
+    } else {
+      ele.css('display', 'none');
+    };
+
+    var ele = $('#cancel');
+
+    if (ele.css('display') ==='none') {
+      ele.css('display', 'inline');
+    } else {
+      ele.css('display', 'none');
+    };
+    
+    var checkboxes = $(".available-checkbox");
+    for(i=0; i< checkboxes.length; i++) {
+        if (checkboxes[i].disabled == true) {
+            checkboxes[i].disabled = false;
+        } else {
+            checkboxes[i].disabled = true;
+        };
+    };
+};
+
+
+
