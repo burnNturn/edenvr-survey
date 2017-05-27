@@ -53,7 +53,7 @@ $(document).ready( function() {
 
 $(document).on('click', '#update', function() {
     toggleButtons();
-    var url = $(this).data();
+    var url = $(this).attr('data-url');
     debugger;
     var checked_arr = [];
     var unchecked_arr = [];
