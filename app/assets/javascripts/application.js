@@ -62,6 +62,7 @@ $(document).ready( function() {
 $(document).on('click', '#update', function() {
     toggleButtons();
     var url = $(this).attr('data-url');
+    debugger;
     var checked_arr = getIdsOfCheckboxes($('td > input:checked'));
     var unchecked_arr = getIdsOfCheckboxes($("td > input:checkbox:not(:checked)"));
 

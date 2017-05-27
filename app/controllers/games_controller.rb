@@ -15,8 +15,10 @@ class GamesController < ApplicationController
   end
 
   def update_availability
+    byebug
     Game.change_game_availability(params[:checked], params[:unchecked])
-    render :nothing => true
+    # render :nothing => true
+    head :ok 
   end
 
   # GET /games/new
