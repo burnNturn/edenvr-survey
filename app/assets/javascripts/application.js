@@ -16,6 +16,10 @@
 //= require turbolinks
 //= require_tree .
 //= require rails.validations
+
+/********************/
+/////CUSTOMERS JS/////
+/********************/
 $(document).on("mouseenter", "tr", function(){
    $(this).children(".hide-link").children(".hidden-link-container").children().show();
 });
@@ -51,30 +55,20 @@ $(document).ready( function() {
     $('#ui-datepicker-div').css('display', 'none');
 } );
 
+
+/********************/
+///////Game JS////////
+/********************/
 $(document).on('click', '#update', function() {
     toggleButtons();
     var url = $(this).attr('data-url');
-    debugger;
-    var checked_arr = [];
-    var unchecked_arr = [];
-
-    rows = $('tr');
-
-    // i starts at one to skip headers and -1 to
-    // row.size because it need to account for that too
-    for(var i = 1; i <= rows.size - 1; i++) {
-        if(rows[i].is(':checked')) {
-            checked_arr << rows.eq(i).find('td').eq(0).data('game-id');
-        } else {
-            unchecked_arr << rows.eq(i).find('td').eq(0).data('game-id');
-        }
-    }
+    var checked_arr = getIdsOfCheckboxes($('td > input:checked'));
+    var unchecked_arr = getIdsOfCheckboxes($("td > input:checkbox:not(:checked)"));
 
     $.ajax({
         type: "PUT",
         dataType: "script",
         url: url,
-        contentType: 'application/json',
         data: {checked: checked_arr,
                unchecked: unchecked_arr}
     });
@@ -83,6 +77,15 @@ $(document).on('click', '#update', function() {
 $(document).on('click', '#edit-available, #cancel', function() {
     toggleButtons();
 });
+
+//gets #ids from checkboxes EX: <input id='1'>
+function getIdsOfCheckboxes(arr) {
+    var idArr = []
+    $.map(arr, function(n, i) {
+	    idArr[i] = (parseInt(n.id));
+    });
+    return idArr;
+}
 
 function toggleButtons() {
     var ele = $('#edit-available');
