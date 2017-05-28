@@ -1,11 +1,12 @@
 require 'csv'
 
 class Customer < ApplicationRecord
-  enum game_name: {
-    "Tilt Brush" => "Tilt Brush",
-    "Brookhaven" => "Brookhaven",
-    "The Blu"    => "The Blu"
-  }
+  
+  # enum game_name: {
+  #   "Tilt Brush" => "Tilt Brush",
+  #   "Brookhaven" => "Brookhaven",
+  #   "The Blu"    => "The Blu"
+  # }
 
   enum age_range: {
     "5 to 9"   => "5 to 9",
@@ -50,7 +51,7 @@ class Customer < ApplicationRecord
     "Group-Immediate Family" => "Group-Immediate Family"
   }
   validates :date, :machine, presence:true
-  validates :game, inclusion: { in: game_names.keys, message: "Please Select a Game" }
+  #validates_associated :game
   validates :age, inclusion: { in: age_ranges.keys, message: "Please Select Age Range"}
   validates :gender, inclusion: { in: gender_fields.keys, message: "Please Select Gender"}
   validates :race, inclusion: { in: race_fields.keys, message: "Please Select Race"}

@@ -35,6 +35,7 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+    @games_avail = Game.where(:available => true)
   end
 
   # GET /customers/1/edit
@@ -45,6 +46,7 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+    byebug
     @customer = Customer.new(customer_params)
     @machine = @customer.machine
     respond_to do |format|

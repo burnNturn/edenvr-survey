@@ -16,7 +16,8 @@
 
   <div class="form-group">
     <%= f.label :game %>
-    <%= f.select :game, Customer.game_names.keys,
+    <% options = options_from_collection_for_select(@games_avail, :title, :title) %>
+    <%= f.select :game, options,
                         prompt: 'Select a Game' %>
   </div>
 
