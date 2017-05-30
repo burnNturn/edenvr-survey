@@ -8,6 +8,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @params = params
+    @games = Game.all
     @customers = if !params[:search].present? || (params[:start_date].empty? &&
                       params[:end_date].empty? && params[:age].empty? &&
                       params[:gender].empty? && params[:income].empty? &&

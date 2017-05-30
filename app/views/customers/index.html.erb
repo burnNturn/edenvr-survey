@@ -22,8 +22,8 @@
         <div>
           <%= date_field_tag 'start_date', '2017-01-01', {class: "form_control"} %>
           <%= date_field_tag 'end_date', nil, {type: "div", class: "form_control"} %>
-          <%= select_tag :game, options_from_collection_for_select(Customer::game_names, :first, :last),
-              prompt: 'Select a Game', class:"form_control" %>
+          <% options = options_from_collection_for_select(@games, :id, :title) %>
+          <%= select_tag :game, options, prompt: 'Select a Game', class:"form_control" %>
           <%= select_tag :gender, options_from_collection_for_select(Customer::gender_fields, :first, :last),
               prompt: 'Select Gender', class:"form_control" %>
           <%= select_tag :age, options_from_collection_for_select(Customer::age_ranges, :first, :last),
